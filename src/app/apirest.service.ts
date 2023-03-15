@@ -1,8 +1,10 @@
 import { HttpClient, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Client } from './client';
 
 const url = "http://localhost:9292/api/users"
 const urlToken = "http://localhost:9292/token"
+const urlClient = "http://localhost:9292/api/client"
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,11 @@ export class ApirestService {
 
   getAllUsers() {
     //, {headers : new HttpHeaders().set('X-Auth-Token', this.token['token'])}
-    this.http.get(url, {headers : new HttpHeaders().set('X-Auth-Token', this.token)}).subscribe(data=>console.log(data))
+    this.http.get(url, {headers : new HttpHeaders().set('x-auth-token', this.token)}).subscribe(data=>console.log(data))
+  }
+
+  public createClient(client: Client){
+    return this.http.post<Client>(urlClient, client, {headers : new HttpHeaders().set('x-auth-token', this.token)}).subscribe();
   }
 }
 

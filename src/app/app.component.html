@@ -1,2 +1,10 @@
-
-<router-outlet></router-outlet>
+<div th:replace="fragments/menu :: tagmenu">  </div>  
+	<form #formClient="ngForm" (ngSubmit)="formulaireClient(formClient)">
+         First Name:
+         <input type="text" name="prenom" [(ngModel)]="prenom"/>    
+         <br/>
+         Last Name:
+         <input type="text" name ="nom" [(ngModel)]="nom"/>     
+         <br/>
+         <input type="submit" value="Create"/>
+    </form>

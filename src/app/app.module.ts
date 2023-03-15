@@ -5,6 +5,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent} from './app.component';
 import { ApirestService, XhrInterceptor } from './apirest.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ApirestService, XhrInterceptor } from './apirest.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [ApirestService, { provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
   bootstrap: [AppComponent]
